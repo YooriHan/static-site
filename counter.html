@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Counter | Challenge</title>
+    <style>
+        /* Modern styling for the counter */
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f1f2f6;
+        }
+        .counter-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 { color: #2f3542; margin-bottom: 10px; }
+        #count {
+            font-size: 100px;
+            font-weight: bold;
+            color: #2f3542;
+            margin: 20px 0;
+            transition: color 0.3s ease;
+        }
+        .buttons { display: flex; gap: 15px; }
+        button {
+            padding: 12px 25px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: 0.2s;
+            font-weight: bold;
+            color: white;
+        }
+        .btn-minus { background-color: #ff4757; }
+        .btn-reset { background-color: #747d8c; }
+        .btn-plus { background-color: #2ed573; }
+        button:hover { opacity: 0.8; transform: translateY(-2px); }
+    </style>
+</head>
+<body>
+
+    <div class="counter-container">
+        <h1>JavaScript Counter</h1>
+        <div id="count">0</div>
+        <div class="buttons">
+            <button class="btn-minus" id="minus">-</button>
+            <button class="btn-reset" id="reset">Reset</button>
+            <button class="btn-plus" id="plus">+</button>
+        </div>
+        <br>
+        <a href="index.html" style="text-decoration: none; color: #0984e3; font-weight: bold;">← Back to Home</a>
+    </div>
+
+    <script>
+        // Set initial count
+        let number = 0;
+        const countDisplay = document.getElementById("count");
+
+        // Function to update the number's color
+        function updateColor() {
+            if (number > 0) countDisplay.style.color = "#2ed573";
+            else if (number < 0) countDisplay.style.color = "#ff4757";
+            else countDisplay.style.color = "#2f3542";
+        }
+
+        // Add click events to buttons
+        document.getElementById("plus").onclick = () => {
+            number++;
+            countDisplay.textContent = number;
+            updateColor();
+        };
+
+        document.getElementById("minus").onclick = () => {
+            number--;
+            countDisplay.textContent = number;
+            updateColor();
+        };
+
+        document.getElementById("reset").onclick = () => {
+            number = 0;
+            countDisplay.textContent = number;
+            updateColor();
+        };
+    </script>
+</body>
+</html>
